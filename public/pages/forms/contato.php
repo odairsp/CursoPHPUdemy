@@ -6,4 +6,4 @@ $validate = validate([
     'email' => 'e',
 ]);
 
-dd($validate->name);
+echo $validate->name;
