@@ -1,3 +1,9 @@
 <?php
+require "../../../bootstrap.php";
 
-echo 'cadastrar';
+$validate = validate([
+    'name' => 's',
+    'email' => 'e'
+]);
+
+dd($validate->name);
