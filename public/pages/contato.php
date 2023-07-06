@@ -1,7 +1,14 @@
 <h2 class="my-4">CONTATO</h2>
+<div class="d-flex flex-row justify-content-start align-bottom my-2">
 
-<legend class="">Preencha seus dados</legend>
+    <div class="d-flex my-2">
+        <legend>Preencha seus dados</legend>
+    </div>
+    <div class="d-flex my-2 ms-2">
+        <?= getFlash('message'); ?>
+    </div>
 
+</div>
 <form action="/pages/forms/contato.php" method="post" class="card p-3">
     <div class="form-group">
         <label for="name" class="form-label">Nome</label>

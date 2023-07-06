@@ -1,5 +1,8 @@
 <?php
 
+// filtra a uri contra injeção de codigo e puxa a pagina a ser carregada 
+// com url?page=pagina retorna pagina.php que vai dentro do index 
+
 function load()
 {
 

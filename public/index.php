@@ -1,4 +1,8 @@
-<?php require "../bootstrap.php"; ?>
+<?php
+// todas as funçoes são distribuidas por aki
+require "../bootstrap.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +16,7 @@
 </head>
 
 <body>
-    <header></header>
+    <header>Header</header>
     <main>
         <div class="container">
 
@@ -32,11 +36,7 @@
     </main>
 
 
-
-
-
-
-    <footer></footer>
+    <footer>Footer</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
