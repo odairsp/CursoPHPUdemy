@@ -5,7 +5,7 @@
 function send(array $data)
 {
 
-    $mail = new PHPMailer\PHPMailer\PHPMailer();
+    $mail = new PHPMailer\PHPMailer\PHPMailer;
     $mail->CharSet = 'UTF-8';
     //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
 
