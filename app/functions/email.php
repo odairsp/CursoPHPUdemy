@@ -7,9 +7,9 @@ function send(array $data)
 
     $mail = new PHPMailer\PHPMailer\PHPMailer;
     $mail->CharSet = 'UTF-8';
-    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    //Enable verbose debug output
 
-    $mail->SMTPSecure = 'tls'; //PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->SMTPSecure = 'tls'; //PHPMailer::ENCRYPTION_SMTPS;   //Enable implicit TLS encryption
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'sandbox.smtp.mailtrap.io';             //Set the SMTP server to send through
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
