@@ -20,7 +20,6 @@ $validate = validate([
 
 
 
-
 $data = [
 
     'quem' => $validate->email,

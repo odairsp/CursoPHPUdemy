@@ -1,3 +1,5 @@
+<?= getFlash('message'); ?>
+
 <form action="/pages/forms/create_user.php" method="post">
 
     <div class="form-group">
