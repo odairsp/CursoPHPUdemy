@@ -19,7 +19,7 @@ function create($table, $fields)
 
     $sql = "INSERT INTO {$table}";
     $sql += "(" . implode(',', array_keys($fields)) . ")";
-    $sql += " VALUES(:" . implode(',:', array_values($fields)) . ")";
+    $sql += " VALUES(:" . implode(',', array_values($fields)) . ")";
 
     $insert = $pdo->prepare($sql);
     return $insert->execute($fields);
@@ -35,16 +35,30 @@ function all($table)
     return $list->fetchAll();
 }
 
-function update()
-{
-}
-function find($table, $user)
+function update($table, $fields)
 {
     $pdo = connect();
-    $sql = "SELECT * FROM {$table} WHERE ;";
-    $list = $pdo->query($sql);
-    $list->execute();
 
+    if (!is_array($fields)) {
+        $fields = (array) $fields;
+    }
+
+    $sql = "UPDATE {$table}";
+    $sql += "(SET " . implode(',', array_keys($fields)) . ")";
+    $sql += " VALUES(:" . implode(',', array_values($fields)) . ")";
+
+    $insert = $pdo->prepare($sql);
+    return $insert->execute($fields);
+}
+function find($table, $field, $value)
+{
+    $pdo = connect();
+    $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+    $sql = "SELECT * FROM {$table} WHERE {$field} = {$value};";
+    $find = $pdo->prepare($sql);
+    $find->execute();
+
+    return $find->fetch();
 }
 
 function delete()
