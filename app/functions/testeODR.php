@@ -12,7 +12,6 @@
 function name()
 {
    return 'NOME';
-
 }
 
 function lastname()
@@ -20,10 +19,20 @@ function lastname()
    return 'SOBRENOME';
 }
 
-function completo($callback1)
-{
 
-   return $callback1();
+
+function nome($callback)
+{
+   return call_user_func($callback);
 }
 
-echo completo('lastname');
+function completo($callback1, $callback2)
+{
+   if (is_callable($callback1) && is_callable($callback2)) {
+      return $callback1 . ' ' . $callback2;
+   }
+}
+
+// echo completo('name', 'lastname');
+// echo "\n";
+echo nome('name');
