@@ -11,8 +11,9 @@ function load()
     $page = (!$page) ? 'pages/home.php' : "pages/{$page}.php";
 
     if (!file_exists($page)) {
-        throw new Exception("Pagina não existe!");
+        throw new Exception("Página não existe!");
     }
 
     return $page;
+    
 }

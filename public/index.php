@@ -1,15 +1,7 @@
 <?php
 // todas as funçoes são distribuidas por aki
 require "../bootstrap.php";
-
-foreach ($_SERVER as $key => $value) {
-  print_r("<pre>{$key} = {$value}</pre>");
-
-}
-
 ?>  
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,32 +14,24 @@ foreach ($_SERVER as $key => $value) {
 </head>
 
 <body>
-
     <header>
-        <div class="container-fluid">
-            Header
-        </div>
-
+        <div class="container-fluid">Header</div>
     </header>
-
     <main>
         <div class="container">
-
             <?php
             try {
-
-                require load();
+               require load();
             } catch (Exception $e) {
 
                 echo "<h2>{$e->getMessage()}</h2>";
             }
 
+            // require 'pages/home.php';
+
             ?>
-
         </div>
-
     </main>
-
 
     <footer>
         <div class="container-fluid">
