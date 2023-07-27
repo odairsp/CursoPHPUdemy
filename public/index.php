@@ -1,7 +1,15 @@
 <?php
 // todas as funçoes são distribuidas por aki
 require "../bootstrap.php";
-?>
+
+foreach ($_SERVER as $key => $value) {
+  print_r("<pre>{$key} = {$value}</pre>");
+
+}
+
+?>  
+
+
 
 <!DOCTYPE html>
 <html lang="en">
