@@ -4,7 +4,7 @@ require "../../../bootstrap.php";
 
 
 
-if (isEmpty()) {
+if (isEmptyRequest()) {
 
     flash('message', 'Preencha todos os campos');
     return redirect("edit_user");

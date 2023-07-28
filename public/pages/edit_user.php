@@ -2,10 +2,9 @@
 <?php
 $user = find('users', 'id', $_GET['id']);
 
-
-
-
 ?>
+<h2>Editar Usuário</h2>
+
 <form action="/pages/forms/edit_user.php" method="post">
 
     <div class="form-group">

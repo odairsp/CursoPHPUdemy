@@ -15,9 +15,11 @@ function request()
     return ($request == 'POST') ? $_POST : $_GET;
 }
 
+
 function redirect($page){
     return header("location:/?page=".$page);
 }
+
 
 function redirectHome(){
     return header("location:/");

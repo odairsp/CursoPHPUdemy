@@ -15,5 +15,4 @@ function load()
     }
 
     return $page;
-    
 }

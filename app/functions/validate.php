@@ -6,12 +6,12 @@
 function validate(array $fields)
 {
     $request = request();
-    $validate = array();
+    $validate = [];
     foreach ($fields as $field => $type) {
 
         switch ($type) {
             case 's':
-                $validate[$field] =  htmlentities($request[$field], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, "UTF-8");
+                $validate[$field] = htmlentities($request[$field], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, "UTF-8");
                 break;
             case 'i':
                 $validate[$field] = filter_var($request[$field], FILTER_SANITIZE_NUMBER_INT);
@@ -26,7 +26,7 @@ function validate(array $fields)
 }
 
 // pega a superglobal $_GET/$_POST pelo metodo custom.php/request() e verifica se alguma de suas posiçoes estão vazias
-function isEmpty()
+function isEmptyRequest()
 {
 
     $request = request();
