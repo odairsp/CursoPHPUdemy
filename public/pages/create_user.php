@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         <label for="sobrenome">Sobrenome</label>
-        <input type="email" class="form-control" name="sobrenome" id="" placeholder="">
+        <input type="text" class="form-control" name="sobrenome" id="" placeholder="">
 
     </div>
     <div class="form-group">
@@ -18,7 +18,7 @@
 
     </div>
     <div class="form-group">
-        <label for="password"></label>
+        <label for="password">Senha</label>
         <input type="password" class="form-control" name="password" id="" placeholder="">
 
 
