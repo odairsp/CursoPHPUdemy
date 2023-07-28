@@ -5,11 +5,9 @@ require "../../../bootstrap.php";
 
 
 if (isEmpty()) {
-
     flash('message', 'Preencha todos os campos!');
     return redirect("contato");
 }
-
 
 $validate = validate([
     'name' => 's',
@@ -18,8 +16,6 @@ $validate = validate([
     'message' => 's'
 ]);
 
-
-
 $data = [
 
     'quem' => $validate->email,
@@ -27,7 +23,6 @@ $data = [
     'mensagem'=> $validate->message,
     'assunto' => $validate->subject
 ];
-
 
 if(send($data)){
     
