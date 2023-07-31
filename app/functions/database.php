@@ -59,6 +59,8 @@ function find($table, $field, $value)
     $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
     $sql = "SELECT * FROM {$table} WHERE {$field} = :{$field};";
     $find = $pdo->prepare($sql);
+    
+    $find->bindValue($field, $value);
     $find->execute();
 
     return $find->fetch();

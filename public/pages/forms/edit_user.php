@@ -11,7 +11,6 @@ if (isEmptyRequest()) {
 }
 
 $validate = validate([
-    'id'=> 'i',
     'nome' => 's',
     'sobrenome' => 's',
     'email' => 'e',
