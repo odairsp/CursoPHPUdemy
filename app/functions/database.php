@@ -2,7 +2,7 @@
 
 function connect()
 {
-    $pdo = new PDO("mysql:host=localhost;dbname=udemyphp;charset=utf8", 'root', 'etec');
+    $pdo = new PDO("mysql:host=localhost;dbname=udemyphp;charset=utf8", 'root', '123456');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
@@ -10,7 +10,6 @@ function connect()
 }
 function create($table, $fields)
 {
-
     $pdo = connect();
 
     if (!is_array($fields)) {
@@ -26,7 +25,6 @@ function create($table, $fields)
 
 function all($table)
 {
-
     $pdo = connect();
     $sql = "SELECT * FROM {$table};";
     $list = $pdo->query($sql);
@@ -34,23 +32,28 @@ function all($table)
     return $list->fetchAll();
 }
 
-function update($table, $fields)
+function update($table, $fields, $where)
 {
     $pdo = connect();
 
     if (!is_array($fields)) {
         $fields = (array) $fields;
     }
-    $id = $fields['id'];
-    array_shift($fields);
 
-    $sql = "UPDATE {$table}";
-    $sql .= " SET " . implode('= ', array_keys($fields));
-    $sql .= " WHERE id =" . $id . ";";
-    dd($sql);
-    $insert = $pdo->prepare($sql);
+    $data = array_map(function ($field) {
+        return "{$field} = :{$field}";
+    }, array_keys($fields));
 
-    return $insert->execute($fields);
+    $sql = "UPDATE {$table} SET ";
+    $sql .= implode(", ", $data);
+    $sql .= " WHERE {$where[0]} = :{$where[0]};";
+
+    $data = array_merge($fields, [$where[0] => $where[1]]);
+    
+    $update = $pdo->prepare($sql);
+    $update->execute($data);
+
+    return $update->rowCount();
 }
 
 function find($table, $field, $value)
@@ -59,13 +62,22 @@ function find($table, $field, $value)
     $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
     $sql = "SELECT * FROM {$table} WHERE {$field} = :{$field};";
     $find = $pdo->prepare($sql);
-    
+
     $find->bindValue($field, $value);
     $find->execute();
 
     return $find->fetch();
 }
 
-function delete()
+function delete($table, $field, $value)
 {
+    $pdo = connect();
+
+    $sql = "DELETE FROM {$table} WHERE {$field} =:{$field};";
+
+    $delete = $pdo->prepare($sql);
+    $delete->bindValue($field, $value);
+
+    return $delete->execute();
+
 }

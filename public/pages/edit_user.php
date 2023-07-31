@@ -23,11 +23,7 @@ $user = find('users', 'id', $_GET['id']);
         <input type="email" class="form-control" name="email" id="" value="<?= $user->email ?>">
 
     </div>
-    <div class="form-group">
-        <label for="password" class="mt-2">Senha</label>
-        <input type="password" class="form-control" name="password" id="" value="">
-
-
+    
 
         <button type="submit" class="btn btn-sm btn-primary mt-3">Editar</button>
 
