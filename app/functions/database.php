@@ -18,9 +18,8 @@ function create($table, $fields)
     }
 
     $sql = "INSERT INTO {$table}";
-    $sql += "(" . implode(',', array_keys($fields)) . ")";
-    $sql += " VALUES(:" . implode(',', array_values($fields)) . ")";
-
+    $sql .= " (" . implode(', ', array_keys($fields)) . ")";
+    $sql .= " VALUES (:" . implode(', :', array_keys($fields)) . ")";
     $insert = $pdo->prepare($sql);
     return $insert->execute($fields);
 }
@@ -42,19 +41,23 @@ function update($table, $fields)
     if (!is_array($fields)) {
         $fields = (array) $fields;
     }
+    $id = $fields['id'];
+    array_shift($fields);
 
     $sql = "UPDATE {$table}";
-    $sql += "(SET " . implode(',', array_keys($fields)) . ")";
-    $sql += " VALUES(:" . implode(',', array_values($fields)) . ")";
-
+    $sql .= " SET " . implode('= ', array_keys($fields));
+    $sql .= " WHERE id =" . $id . ";";
+    dd($sql);
     $insert = $pdo->prepare($sql);
+
     return $insert->execute($fields);
 }
+
 function find($table, $field, $value)
 {
     $pdo = connect();
     $value = filter_var($value, FILTER_SANITIZE_NUMBER_INT);
-    $sql = "SELECT * FROM {$table} WHERE {$field} = {$value};";
+    $sql = "SELECT * FROM {$table} WHERE {$field} = :{$field};";
     $find = $pdo->prepare($sql);
     $find->execute();
 

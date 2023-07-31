@@ -11,6 +11,7 @@ if (isEmptyRequest()) {
 }
 
 $validate = validate([
+    'id'=> 'i',
     'nome' => 's',
     'sobrenome' => 's',
     'email' => 'e',
@@ -20,9 +21,9 @@ $validate = validate([
 $cadastrado = update('users', $validate);
 
 if ($cadastrado) {
-    flash('message', 'Cadastrado com sucesso!', 'success');
+    flash('message', 'Editado com sucesso!', 'success');
     return redirect("home");
 }
 
-flash('message', 'ERRO ao cadastrar!');
+flash('message', 'ERRO ao editar!');
 redirect("edit_user");
