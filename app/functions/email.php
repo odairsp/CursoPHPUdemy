@@ -11,8 +11,8 @@ function send(array $data)
     $mail->Host       = 'sandbox.smtp.mailtrap.io';             //Set the SMTP server to send through
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = '88eef55d10e156';                       //SMTP username
-    $mail->Password   = 'e7548264dd2dc6';                       //SMTP password
+    $mail->Username   = '875a373776b689';                       //SMTP username
+    $mail->Password   = '6059407e102e45';                       //SMTP password
 
     //Recipients
     $mail->setFrom('php@example.com', $data['quem']);
@@ -33,4 +33,6 @@ function send(array $data)
     $mail->AltBody = 'Para ver este mail tenha certeza de estar vendo em um programa que aceite ver HTML!';
     $mail->msgHTML($data['mensagem']);
     return $mail->send();
+
+    
 }
