@@ -1,4 +1,5 @@
 <a href="?page=create_user" class="btn btn-sm btn-success">Cadastrar User</a>
+<a href="?page=contato" class="btn btn-sm btn-success">Contato</a>
 
 <h2>HOME</h2>
 

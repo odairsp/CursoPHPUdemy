@@ -17,7 +17,7 @@ $validate = validate([
     'password' => 's'
 ]);
 
-$cadastrado = update('users', $validade);
+$cadastrado = update('users', $validate);
 
 if ($cadastrado) {
     flash('message', 'Cadastrado com sucesso!', 'success');
